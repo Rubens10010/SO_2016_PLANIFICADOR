@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QFontComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -48,6 +49,7 @@ public:
     QPushButton *pushButton_4;
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
+    QFontComboBox *fontComboBox;
     QFrame *frame_trabajos;
     QLabel *label_2;
     QTableWidget *tabla_tareas;
@@ -221,6 +223,9 @@ public:
         pushButton_6 = new QPushButton(frame_info);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
         pushButton_6->setGeometry(QRect(220, 150, 181, 22));
+        fontComboBox = new QFontComboBox(frame_info);
+        fontComboBox->setObjectName(QStringLiteral("fontComboBox"));
+        fontComboBox->setGeometry(QRect(130, 20, 170, 22));
         frame_trabajos = new QFrame(centralWidget);
         frame_trabajos->setObjectName(QStringLiteral("frame_trabajos"));
         frame_trabajos->setGeometry(QRect(440, 10, 541, 221));

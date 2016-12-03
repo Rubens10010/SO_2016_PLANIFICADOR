@@ -406,11 +406,46 @@ proceso* proceso::copiarProceso()
  * @return: Una copia del estado inicial del proceso
  */
 
-proceso* proceso::obtenerCopiaLimpia()
+proceso proceso::obtenerCopiaLimpia()
 {
 
     // Falta verificar;
-    proceso *temp = new proceso(this->id, this->t_llegada, this->t_servicio, this->prioridad);
-    temp->setTiempoRestante(this->t_servicio);
+    proceso temp(this->id, this->t_llegada, this->t_servicio, this->prioridad);
+    temp.setTiempoRestante(this->t_servicio);
     return temp;
+}
+
+
+bool Primero(const proceso &p1, const proceso &p2)
+{
+
+    if(p1.t_llegada == p2.t_llegada)
+        return p1.id < p2.id;
+    return p1.t_llegada < p2.t_llegada;
+
+}
+
+bool MasCorto(const proceso &p1, const proceso &otro)
+{
+
+    if(p1.getTiempoTotal() == otro.getTiempoTotal())
+        return p1.voyPrimero(otro);
+    return p1.getTiempoTotal() < otro.getTiempoTotal();
+
+}
+
+bool MasPrioridad(const proceso &p1, const proceso &otro)
+{
+
+    if(p1.getPrioridad() == otro.getPrioridad())
+        return p1.voyPrimero(otro);
+    return p1.getPrioridad() < otro.getPrioridad();
+
+}
+
+bool proceso::MasCortoRestante(proceso &p1, proceso &p2)
+{
+    if(p1.getTiempoRestante() == p2.getTiempoRestante())
+        return p1.voyPrimero(p2);
+    return p1.getTiempoRestante() < p2.getTiempoRestante();
 }

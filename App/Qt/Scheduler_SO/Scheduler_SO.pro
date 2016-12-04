@@ -14,10 +14,30 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    proceso.cpp
+    proceso.cpp \
+    cola.cpp \
+    fcfs.cpp \
+    misalgoritmos.cpp \
+    prioridad1.cpp \
+    prioridad2.cpp \
+    simulacion.cpp \
+    colaprincipal.cpp \
+    roundrobin.cpp \
+    sjf.cpp \
+    strf.cpp
 
 HEADERS  += mainwindow.h \
-    proceso.h
+    proceso.h \
+    cola.h \
+    fcfs.h \
+    misalgoritmos.h \
+    prioridad1.h \
+    prioridad2.h \
+    simulacion.h \
+    colaprincipal.h \
+    roundrobin.h \
+    sjf.h \
+    strf.h
 
 FORMS    += mainwindow.ui
 

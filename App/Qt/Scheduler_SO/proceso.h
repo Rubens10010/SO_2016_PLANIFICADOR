@@ -27,6 +27,7 @@ class proceso
 {
 
 public:
+
     proceso(short id_d, short tl, short ts[5], short prioridad);
     proceso(short i);
 
@@ -53,13 +54,17 @@ public:
     bool voyPrimero(const proceso &otro) const;
     bool soyMasCorto(const proceso &otro) const;
     bool tengoMasPrioridad(const proceso &otro) const;
+    static bool MasCortoRestante(proceso &p1, proceso &p2);
 
     proceso* copiarProceso();
-    proceso* obtenerCopiaLimpia();
+    proceso obtenerCopiaLimpia();
 
-private:
     short id;
     short t_llegada;
+
+private:
+    //short id;
+    //short t_llegada;
     short t_servicio[5];    // Rafagas de CPU y E/S
     short t_total_servicio;
     short comienzo;
@@ -69,5 +74,10 @@ private:
     Estado estado;  // Almacena el estado actual del proceso.
 
 };
+
+bool Primero(const proceso &p1, const proceso &p2);
+bool MasCorto(const proceso &p1, const proceso &otro);
+bool MasPrioridad(const proceso &p1, const proceso &otro);
+//bool MasCortoRestante(const proceso &p1, const proceso &p2);
 
 #endif // PROCESO_H

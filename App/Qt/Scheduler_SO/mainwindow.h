@@ -3,6 +3,12 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include "simulacion.h"
+#include "colaprincipal.h"
+#include <QVector>
+#include <QStringList>
+#include <QString>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +27,7 @@ public:
     void llenar_arreglo_cola_cpu();
     void llenar_arreglo_cola_es();
 
+     void fillTable();
 
 
     QLabel* array_gantt_cpu[47];
@@ -29,6 +36,7 @@ public:
     QLabel* array_cola_es[8];
 
 private slots:
+
     void on_boton_simular_clicked();
 
 private:

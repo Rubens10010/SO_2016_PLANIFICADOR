@@ -30,7 +30,37 @@ MainWindow::~MainWindow()
 void MainWindow::on_boton_simular_clicked()
 {
     cout << "asd" << endl;
+    array_gantt_cpu[0]->setText("1");
+    array_gantt_cpu[0]->setStyleSheet("background-color:blue;");
 }
+
+void MainWindow::on_boton_detener_clicked()
+{
+
+}
+
+void MainWindow::on_boton_siguiente_clicked()
+{
+
+}
+
+void MainWindow::on_boton_reiniciar_clicked()
+{
+    limpiar_arreglos();
+}
+
+void MainWindow::on_boton_comenzar_clicked()
+{
+
+}
+
+void MainWindow::on_boton_terminar_clicked()
+{
+
+}
+
+
+
 
 
 void MainWindow::llenar_arreglo_gantt_cpu()
@@ -158,3 +188,12 @@ void MainWindow::llenar_arreglo_cola_es()
     array_cola_es[6] = ui->cola_es_7;
     array_cola_es[7] = ui->cola_es_8;
 }
+
+void MainWindow::limpiar_arreglos()
+{
+    for(auto ms : array_gantt_cpu) {
+        ms->setText("");
+        ms->setStyleSheet("");
+    }
+}
+

@@ -21,6 +21,7 @@ public:
     void llenar_arreglo_cola_cpu();
     void llenar_arreglo_cola_es();
 
+    void limpiar_arreglos();
 
 
     QLabel* array_gantt_cpu[47];
@@ -30,6 +31,11 @@ public:
 
 private slots:
     void on_boton_simular_clicked();
+    void on_boton_detener_clicked();
+    void on_boton_siguiente_clicked();
+    void on_boton_reiniciar_clicked();
+    void on_boton_comenzar_clicked();
+    void on_boton_terminar_clicked();
 
 private:
     Ui::MainWindow *ui;

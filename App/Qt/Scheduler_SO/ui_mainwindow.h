@@ -13,7 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QFontComboBox>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -44,10 +44,10 @@ public:
     QPushButton *pushButton_4;
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
-    QFontComboBox *fontComboBox;
-    QFontComboBox *fontComboBox_2;
-    QFontComboBox *fontComboBox_3;
-    QFontComboBox *fontComboBox_4;
+    QComboBox *comboBox;
+    QComboBox *comboBox_2;
+    QComboBox *comboBox_3;
+    QComboBox *comboBox_4;
     QFrame *frame_trabajos;
     QLabel *label_2;
     QTableWidget *tabla_tareas;
@@ -271,18 +271,22 @@ public:
         pushButton_6 = new QPushButton(frame_info);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
         pushButton_6->setGeometry(QRect(220, 150, 181, 22));
-        fontComboBox = new QFontComboBox(frame_info);
-        fontComboBox->setObjectName(QStringLiteral("fontComboBox"));
-        fontComboBox->setGeometry(QRect(10, 80, 91, 22));
-        fontComboBox_2 = new QFontComboBox(frame_info);
-        fontComboBox_2->setObjectName(QStringLiteral("fontComboBox_2"));
-        fontComboBox_2->setGeometry(QRect(210, 80, 101, 22));
-        fontComboBox_3 = new QFontComboBox(frame_info);
-        fontComboBox_3->setObjectName(QStringLiteral("fontComboBox_3"));
-        fontComboBox_3->setGeometry(QRect(110, 80, 81, 22));
-        fontComboBox_4 = new QFontComboBox(frame_info);
-        fontComboBox_4->setObjectName(QStringLiteral("fontComboBox_4"));
-        fontComboBox_4->setGeometry(QRect(320, 80, 81, 22));
+        comboBox = new QComboBox(frame_info);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+        comboBox->setGeometry(QRect(10, 80, 79, 22));
+        comboBox->setEditable(true);
+        comboBox_2 = new QComboBox(frame_info);
+        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+        comboBox_2->setEnabled(false);
+        comboBox_2->setGeometry(QRect(120, 80, 79, 22));
+        comboBox_3 = new QComboBox(frame_info);
+        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
+        comboBox_3->setGeometry(QRect(210, 80, 101, 22));
+        comboBox_3->setEditable(true);
+        comboBox_4 = new QComboBox(frame_info);
+        comboBox_4->setObjectName(QStringLiteral("comboBox_4"));
+        comboBox_4->setGeometry(QRect(330, 80, 79, 22));
+        comboBox_4->setEditable(true);
         frame_trabajos = new QFrame(centralWidget);
         frame_trabajos->setObjectName(QStringLiteral("frame_trabajos"));
         frame_trabajos->setGeometry(QRect(440, 20, 541, 221));
@@ -5698,10 +5702,37 @@ public:
         pushButton_4->setText(QApplication::translate("MainWindow", "Reiniciar", 0));
         pushButton_5->setText(QApplication::translate("MainWindow", "Comenzar otra simulacion", 0));
         pushButton_6->setText(QApplication::translate("MainWindow", "Terminar", 0));
-        fontComboBox->setCurrentText(QString());
-        fontComboBox_2->setCurrentText(QString());
-        fontComboBox_3->setCurrentText(QString());
-        fontComboBox_4->setCurrentText(QString());
+        comboBox->clear();
+        comboBox->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "1", 0)
+         << QApplication::translate("MainWindow", "2", 0)
+         << QApplication::translate("MainWindow", "3", 0)
+         << QApplication::translate("MainWindow", "4", 0)
+         << QApplication::translate("MainWindow", "5", 0)
+         << QApplication::translate("MainWindow", "6", 0)
+         << QApplication::translate("MainWindow", "7", 0)
+         << QApplication::translate("MainWindow", "8", 0)
+        );
+        comboBox_2->clear();
+        comboBox_2->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "RR", 0)
+         << QApplication::translate("MainWindow", "FCFS", 0)
+         << QApplication::translate("MainWindow", "SJF", 0)
+         << QApplication::translate("MainWindow", "STRF", 0)
+         << QApplication::translate("MainWindow", "Priority 1", 0)
+         << QApplication::translate("MainWindow", "Priority 2", 0)
+        );
+        comboBox_3->clear();
+        comboBox_3->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "5", 0)
+        );
+        comboBox_4->clear();
+        comboBox_4->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "1", 0)
+         << QApplication::translate("MainWindow", "2", 0)
+         << QApplication::translate("MainWindow", "3", 0)
+         << QApplication::translate("MainWindow", "4", 0)
+        );
         label_2->setText(QApplication::translate("MainWindow", "Tareas", 0));
         QTableWidgetItem *___qtablewidgetitem = tabla_tareas->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "#", 0));

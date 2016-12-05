@@ -30,6 +30,7 @@ public:
     Cola obtenerCopia();
     Cola obtenerCopiaLimpia();
     void mostrarCola(short Tiempo_simulacion);
+    std::vector<std::string> getInformacionTabla();
 
 private:
     std::vector<proceso> listaPrincipal;    // lista de procesos

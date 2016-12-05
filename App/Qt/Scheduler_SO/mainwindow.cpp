@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->tabla_tareas->setItem(0,0,new QTableWidgetItem("asd"));
 
+
+    establecer_colores();
     llenar_arreglo_gantt_cpu();
     llenar_arreglo_gantt_es();
     llenar_arreglo_cola_cpu();
@@ -46,6 +48,13 @@ void MainWindow::on_boton_siguiente_clicked()
 
 void MainWindow::on_boton_reiniciar_clicked()
 {
+    ui->tabla_tareas->clear();
+    ui->cpu_tarea_actual->setText("JOB 0");
+    ui->cpu_tiempo_actual->setText("0");
+    ui->cpu_utilizacion->setText("0 %");
+
+    ui->promedio_esperando->setText("0.00");
+    ui->promedio_retorno->setText("0.00");
     limpiar_arreglos();
 }
 
@@ -195,5 +204,29 @@ void MainWindow::limpiar_arreglos()
         ms->setText("");
         ms->setStyleSheet("");
     }
+    for(auto ms : array_gantt_es) {
+        ms->setText("");
+        ms->setStyleSheet("");
+    }
+    for(auto ms : array_cola_cpu) {
+        ms->setText("");
+        ms->setStyleSheet("");
+    }
+    for(auto ms : array_cola_es) {
+        ms->setText("");
+        ms->setStyleSheet("");
+    }
+}
+
+void MainWindow::establecer_colores()
+{
+    colores[0] = "background-color:blue";
+    colores[1] = "background-color:red";
+    colores[2] = "background-color:yellow";
+    colores[3] = "background-color:orange";
+    colores[4] = "background-color:green";
+    colores[5] = "background-color:rgb(142, 255, 111)";
+    colores[6] = "background-color:rgb(50, 68, 72)";
+    colores[7] = "background-color:rgb(99, 195, 255)";
 }
 

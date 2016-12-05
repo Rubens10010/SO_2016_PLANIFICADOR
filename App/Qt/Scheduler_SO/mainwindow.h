@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include <map>
+#include <string>
 
 namespace Ui {
 class MainWindow;
@@ -22,12 +24,15 @@ public:
     void llenar_arreglo_cola_es();
 
     void limpiar_arreglos();
+    void establecer_colores();
 
 
     QLabel* array_gantt_cpu[47];
     QLabel* array_gantt_es[47];
     QLabel* array_cola_cpu[8];
     QLabel* array_cola_es[8];
+
+    std::map<int, std::string> colores;
 
 private slots:
     void on_boton_simular_clicked();

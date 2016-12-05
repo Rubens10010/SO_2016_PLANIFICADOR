@@ -5,6 +5,12 @@
 #include <QLabel>
 #include <map>
 #include <string>
+#include "simulacion.h"
+#include "colaprincipal.h"
+#include <QVector>
+#include <QStringList>
+#include <QString>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -23,8 +29,11 @@ public:
     void llenar_arreglo_cola_cpu();
     void llenar_arreglo_cola_es();
 
+
     void limpiar_arreglos();
     void establecer_colores();
+
+    void fillTable();
 
 
     QLabel* array_gantt_cpu[47];
@@ -35,6 +44,7 @@ public:
     std::map<int, std::string> colores;
 
 private slots:
+
     void on_boton_simular_clicked();
     void on_boton_detener_clicked();
     void on_boton_siguiente_clicked();

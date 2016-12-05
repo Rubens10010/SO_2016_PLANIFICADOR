@@ -40,9 +40,6 @@ proceso::proceso(short number)
 void proceso::set_aleatorio(short number)
 {
 
-    time_t t;
-    time(&t);
-    srand((unsigned)t);
 
     this->id = number;
     int ciclos[3]= {1,3,5}; // Numero de rafagas que necesitara el proceso.

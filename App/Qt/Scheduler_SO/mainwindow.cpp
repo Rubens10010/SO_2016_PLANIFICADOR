@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabla_tareas->resizeColumnsToContents();
     ui->tabla_tareas->resizeRowsToContents();
 
-    ui->tabla_tareas->setItem(0,0,new QTableWidgetItem("asd"));
+    //ui->tabla_tareas->setItem(0,0,new QTableWidgetItem("asd"));
 
 
     establecer_colores();
@@ -21,6 +21,15 @@ MainWindow::MainWindow(QWidget *parent) :
     llenar_arreglo_gantt_es();
     llenar_arreglo_cola_cpu();
     llenar_arreglo_cola_es();
+
+    //Llenando Cola
+    int indice=ui->info_num_tarea->currentIndex();
+    indice=indice+1;
+    cpu::ColaPrincipal::crearNueva(indice);
+
+    srand(time(NULL));
+
+
 }
 
 MainWindow::~MainWindow()
@@ -28,12 +37,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_boton_simular_clicked()
 {
-    cout << "asd" << endl;
-    array_gantt_cpu[0]->setText("1");
-    array_gantt_cpu[0]->setStyleSheet("background-color:blue;");
+    fillTable();
 }
 
 void MainWindow::on_boton_detener_clicked()
@@ -230,3 +236,31 @@ void MainWindow::establecer_colores()
     colores[7] = "background-color:rgb(99, 195, 255)";
 }
 
+void MainWindow::fillTable()
+{
+
+    ui->tabla_tareas->clearContents();
+
+    int indice=ui->info_num_tarea->currentIndex();
+    indice=indice+1;
+    cpu::ColaPrincipal::crearNueva(indice);
+
+
+    std::vector<std::string> temp;
+    temp=cpu::ColaPrincipal::obtener().getInformacionTabla();
+
+    for(int i=0;i<temp.size();i++)
+    {
+        QString qstr = QString::fromStdString(temp[i]);
+        QStringList list=qstr.split(" ");
+        qDebug()<<list;
+        ui->tabla_tareas->setItem(i, 0, new QTableWidgetItem(list[0]));
+        ui->tabla_tareas->setItem(i, 1, new QTableWidgetItem(list[1]));
+        ui->tabla_tareas->setItem(i, 2, new QTableWidgetItem(list[2]));
+        ui->tabla_tareas->setItem(i, 3, new QTableWidgetItem(list[3]));
+
+    }
+
+
+
+}

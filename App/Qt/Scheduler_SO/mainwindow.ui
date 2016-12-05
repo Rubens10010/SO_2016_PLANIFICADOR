@@ -323,58 +323,6 @@
       <string>Quantum</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="boton_simular">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>110</y>
-       <width>80</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Simular</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="boton_detener">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>110</y>
-       <width>80</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Detener</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="boton_siguiente">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>110</y>
-       <width>111</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Siguiente Paso</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="boton_reiniciar">
-     <property name="geometry">
-      <rect>
-       <x>330</x>
-       <y>110</y>
-       <width>80</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Reiniciar</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="boton_comenzar">
      <property name="geometry">
       <rect>
@@ -401,152 +349,204 @@
       <string>Terminar</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="info_num_tarea">
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>80</y>
+       <width>77</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QComboBox" name="info_algoritmo">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>RR</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>FCFS</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>SJF</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>STRF</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Priority 1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Priority 2</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="boton_detener">
+        <property name="text">
+         <string>Detener</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>80</y>
-       <width>79</width>
-       <height>22</height>
+       <width>77</width>
+       <height>51</height>
       </rect>
      </property>
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-     <item>
-      <property name="text">
-       <string>1</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>2</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>3</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>4</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>5</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>6</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>7</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>8</string>
-      </property>
-     </item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QComboBox" name="info_num_tarea">
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>8</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="boton_simular">
+        <property name="text">
+         <string>Simular</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
-    <widget class="QComboBox" name="info_algoritmo">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>80</y>
-       <width>79</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>RR</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>FCFS</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>SJF</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>STRF</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Priority 1</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Priority 2</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QComboBox" name="info_velocidad">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>210</x>
        <y>80</y>
-       <width>101</width>
-       <height>22</height>
+       <width>80</width>
+       <height>51</height>
       </rect>
      </property>
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-     <item>
-      <property name="text">
-       <string>5</string>
-      </property>
-     </item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QComboBox" name="info_velocidad">
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="boton_siguiente">
+        <property name="text">
+         <string>Siguiente Paso</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
-    <widget class="QComboBox" name="info_quantum">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>330</x>
        <y>80</y>
-       <width>79</width>
-       <height>22</height>
+       <width>77</width>
+       <height>51</height>
       </rect>
      </property>
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-     <item>
-      <property name="text">
-       <string>1</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>2</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>3</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>4</string>
-      </property>
-     </item>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QComboBox" name="info_quantum">
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="boton_reiniciar">
+        <property name="text">
+         <string>Reiniciar</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
    <widget class="QFrame" name="frame_trabajos">
@@ -8299,27 +8299,6 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <zorder>label_cola_cpu</zorder>
-    <zorder>flecha_cpu</zorder>
-    <zorder>cola_cpu_1</zorder>
-    <zorder>cola_cpu_2</zorder>
-    <zorder>cola_es_1</zorder>
-    <zorder>label_cola_es</zorder>
-    <zorder>cola_es_2</zorder>
-    <zorder>felcha_es</zorder>
-    <zorder>cola_cpu_3</zorder>
-    <zorder>cola_cpu_4</zorder>
-    <zorder>cola_cpu_5</zorder>
-    <zorder>cola_cpu_6</zorder>
-    <zorder>cola_es_3</zorder>
-    <zorder>cola_es_4</zorder>
-    <zorder>cola_es_5</zorder>
-    <zorder>cola_es_6</zorder>
-    <zorder>cola_es_7</zorder>
-    <zorder>cola_cpu_7</zorder>
-    <zorder>cola_cpu_8</zorder>
-    <zorder>cola_es_8</zorder>
-    <zorder>frame_info_5</zorder>
    </widget>
    <widget class="QFrame" name="frame_promedio">
     <property name="geometry">
@@ -49160,7 +49139,7 @@
      <x>0</x>
      <y>0</y>
      <width>994</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPlanificador_de_Procesos_CSUNSA">

@@ -23,6 +23,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -38,16 +39,24 @@ public:
     QLabel *label_algoritmo;
     QLabel *label_velocidad;
     QLabel *label_quantum;
-    QPushButton *boton_simular;
-    QPushButton *boton_detener;
-    QPushButton *boton_siguiente;
-    QPushButton *boton_reiniciar;
     QPushButton *boton_comenzar;
     QPushButton *boton_terminar;
-    QComboBox *info_num_tarea;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
     QComboBox *info_algoritmo;
+    QPushButton *boton_detener;
+    QWidget *widget1;
+    QVBoxLayout *verticalLayout_2;
+    QComboBox *info_num_tarea;
+    QPushButton *boton_simular;
+    QWidget *widget2;
+    QVBoxLayout *verticalLayout_3;
     QComboBox *info_velocidad;
+    QPushButton *boton_siguiente;
+    QWidget *widget3;
+    QVBoxLayout *verticalLayout_4;
     QComboBox *info_quantum;
+    QPushButton *boton_reiniciar;
     QFrame *frame_trabajos;
     QLabel *label_tareas;
     QTableWidget *tabla_tareas;
@@ -265,40 +274,88 @@ public:
         palette4.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         label_quantum->setPalette(palette4);
         label_quantum->setFont(font1);
-        boton_simular = new QPushButton(frame_info);
-        boton_simular->setObjectName(QStringLiteral("boton_simular"));
-        boton_simular->setGeometry(QRect(10, 110, 80, 22));
-        boton_detener = new QPushButton(frame_info);
-        boton_detener->setObjectName(QStringLiteral("boton_detener"));
-        boton_detener->setGeometry(QRect(110, 110, 80, 22));
-        boton_siguiente = new QPushButton(frame_info);
-        boton_siguiente->setObjectName(QStringLiteral("boton_siguiente"));
-        boton_siguiente->setGeometry(QRect(210, 110, 111, 22));
-        boton_reiniciar = new QPushButton(frame_info);
-        boton_reiniciar->setObjectName(QStringLiteral("boton_reiniciar"));
-        boton_reiniciar->setGeometry(QRect(330, 110, 80, 22));
         boton_comenzar = new QPushButton(frame_info);
         boton_comenzar->setObjectName(QStringLiteral("boton_comenzar"));
         boton_comenzar->setGeometry(QRect(20, 150, 191, 22));
         boton_terminar = new QPushButton(frame_info);
         boton_terminar->setObjectName(QStringLiteral("boton_terminar"));
         boton_terminar->setGeometry(QRect(220, 150, 181, 22));
-        info_num_tarea = new QComboBox(frame_info);
-        info_num_tarea->setObjectName(QStringLiteral("info_num_tarea"));
-        info_num_tarea->setGeometry(QRect(10, 80, 79, 22));
-        info_num_tarea->setEditable(true);
-        info_algoritmo = new QComboBox(frame_info);
+        widget = new QWidget(frame_info);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(100, 80, 77, 51));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        info_algoritmo = new QComboBox(widget);
         info_algoritmo->setObjectName(QStringLiteral("info_algoritmo"));
         info_algoritmo->setEnabled(true);
-        info_algoritmo->setGeometry(QRect(120, 80, 79, 22));
-        info_velocidad = new QComboBox(frame_info);
+
+        verticalLayout->addWidget(info_algoritmo);
+
+        boton_detener = new QPushButton(widget);
+        boton_detener->setObjectName(QStringLiteral("boton_detener"));
+
+        verticalLayout->addWidget(boton_detener);
+
+        widget1 = new QWidget(frame_info);
+        widget1->setObjectName(QStringLiteral("widget1"));
+        widget1->setGeometry(QRect(10, 80, 77, 51));
+        verticalLayout_2 = new QVBoxLayout(widget1);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        info_num_tarea = new QComboBox(widget1);
+        info_num_tarea->setObjectName(QStringLiteral("info_num_tarea"));
+        info_num_tarea->setEditable(true);
+
+        verticalLayout_2->addWidget(info_num_tarea);
+
+        boton_simular = new QPushButton(widget1);
+        boton_simular->setObjectName(QStringLiteral("boton_simular"));
+
+        verticalLayout_2->addWidget(boton_simular);
+
+        widget2 = new QWidget(frame_info);
+        widget2->setObjectName(QStringLiteral("widget2"));
+        widget2->setGeometry(QRect(210, 80, 80, 51));
+        verticalLayout_3 = new QVBoxLayout(widget2);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        info_velocidad = new QComboBox(widget2);
         info_velocidad->setObjectName(QStringLiteral("info_velocidad"));
-        info_velocidad->setGeometry(QRect(210, 80, 101, 22));
         info_velocidad->setEditable(true);
-        info_quantum = new QComboBox(frame_info);
+
+        verticalLayout_3->addWidget(info_velocidad);
+
+        boton_siguiente = new QPushButton(widget2);
+        boton_siguiente->setObjectName(QStringLiteral("boton_siguiente"));
+
+        verticalLayout_3->addWidget(boton_siguiente);
+
+        widget3 = new QWidget(frame_info);
+        widget3->setObjectName(QStringLiteral("widget3"));
+        widget3->setGeometry(QRect(330, 80, 77, 51));
+        verticalLayout_4 = new QVBoxLayout(widget3);
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        info_quantum = new QComboBox(widget3);
         info_quantum->setObjectName(QStringLiteral("info_quantum"));
-        info_quantum->setGeometry(QRect(330, 80, 79, 22));
         info_quantum->setEditable(true);
+
+        verticalLayout_4->addWidget(info_quantum);
+
+        boton_reiniciar = new QPushButton(widget3);
+        boton_reiniciar->setObjectName(QStringLiteral("boton_reiniciar"));
+
+        verticalLayout_4->addWidget(boton_reiniciar);
+
         frame_trabajos = new QFrame(centralWidget);
         frame_trabajos->setObjectName(QStringLiteral("frame_trabajos"));
         frame_trabajos->setGeometry(QRect(440, 20, 541, 221));
@@ -1314,26 +1371,6 @@ public:
         palette32.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush2);
         cola_es_8->setPalette(palette32);
         cola_es_8->setAlignment(Qt::AlignCenter);
-        label_cola_cpu->raise();
-        flecha_cpu->raise();
-        cola_cpu_1->raise();
-        cola_cpu_2->raise();
-        cola_es_1->raise();
-        label_cola_es->raise();
-        cola_es_2->raise();
-        felcha_es->raise();
-        cola_cpu_3->raise();
-        cola_cpu_4->raise();
-        cola_cpu_5->raise();
-        cola_cpu_6->raise();
-        cola_es_3->raise();
-        cola_es_4->raise();
-        cola_es_5->raise();
-        cola_es_6->raise();
-        cola_es_7->raise();
-        cola_cpu_7->raise();
-        cola_cpu_8->raise();
-        cola_es_8->raise();
         frame_promedio = new QFrame(centralWidget);
         frame_promedio->setObjectName(QStringLiteral("frame_promedio"));
         frame_promedio->setGeometry(QRect(750, 250, 231, 101));
@@ -6218,7 +6255,7 @@ public:
         MainWindow->setStatusBar(statusBar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 994, 19));
+        menuBar->setGeometry(QRect(0, 0, 994, 21));
         menuPlanificador_de_Procesos_CSUNSA = new QMenu(menuBar);
         menuPlanificador_de_Procesos_CSUNSA->setObjectName(QStringLiteral("menuPlanificador_de_Procesos_CSUNSA"));
         menuAyuda = new QMenu(menuBar);
@@ -6242,12 +6279,18 @@ public:
         label_algoritmo->setText(QApplication::translate("MainWindow", "Algoritmo", 0));
         label_velocidad->setText(QApplication::translate("MainWindow", "Velocidad de sim", 0));
         label_quantum->setText(QApplication::translate("MainWindow", "Quantum", 0));
-        boton_simular->setText(QApplication::translate("MainWindow", "Simular", 0));
-        boton_detener->setText(QApplication::translate("MainWindow", "Detener", 0));
-        boton_siguiente->setText(QApplication::translate("MainWindow", "Siguiente Paso", 0));
-        boton_reiniciar->setText(QApplication::translate("MainWindow", "Reiniciar", 0));
         boton_comenzar->setText(QApplication::translate("MainWindow", "Comenzar otra simulacion", 0));
         boton_terminar->setText(QApplication::translate("MainWindow", "Terminar", 0));
+        info_algoritmo->clear();
+        info_algoritmo->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "RR", 0)
+         << QApplication::translate("MainWindow", "FCFS", 0)
+         << QApplication::translate("MainWindow", "SJF", 0)
+         << QApplication::translate("MainWindow", "STRF", 0)
+         << QApplication::translate("MainWindow", "Priority 1", 0)
+         << QApplication::translate("MainWindow", "Priority 2", 0)
+        );
+        boton_detener->setText(QApplication::translate("MainWindow", "Detener", 0));
         info_num_tarea->clear();
         info_num_tarea->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "1", 0)
@@ -6259,19 +6302,12 @@ public:
          << QApplication::translate("MainWindow", "7", 0)
          << QApplication::translate("MainWindow", "8", 0)
         );
-        info_algoritmo->clear();
-        info_algoritmo->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "RR", 0)
-         << QApplication::translate("MainWindow", "FCFS", 0)
-         << QApplication::translate("MainWindow", "SJF", 0)
-         << QApplication::translate("MainWindow", "STRF", 0)
-         << QApplication::translate("MainWindow", "Priority 1", 0)
-         << QApplication::translate("MainWindow", "Priority 2", 0)
-        );
+        boton_simular->setText(QApplication::translate("MainWindow", "Simular", 0));
         info_velocidad->clear();
         info_velocidad->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "5", 0)
         );
+        boton_siguiente->setText(QApplication::translate("MainWindow", "Siguiente Paso", 0));
         info_quantum->clear();
         info_quantum->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "1", 0)
@@ -6279,6 +6315,7 @@ public:
          << QApplication::translate("MainWindow", "3", 0)
          << QApplication::translate("MainWindow", "4", 0)
         );
+        boton_reiniciar->setText(QApplication::translate("MainWindow", "Reiniciar", 0));
         label_tareas->setText(QApplication::translate("MainWindow", "Tareas", 0));
         QTableWidgetItem *___qtablewidgetitem = tabla_tareas->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "#", 0));

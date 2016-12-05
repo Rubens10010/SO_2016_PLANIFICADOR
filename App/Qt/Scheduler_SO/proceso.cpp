@@ -449,3 +449,19 @@ bool proceso::MasCortoRestante(proceso &p1, proceso &p2)
         return p1.voyPrimero(p2);
     return p1.getTiempoRestante() < p2.getTiempoRestante();
 }
+
+
+std::string proceso::getString()
+{
+    std::string row;
+
+    row = std::to_string(this->id) +" ";
+    row = row + std::to_string(this->t_llegada) + " ";
+
+    for(int j = 0; j < 4; j++)
+    {
+        row = row + std::to_string(this->t_servicio[j]) +"-";
+    }
+    row = row + std::to_string(this->t_servicio[4]) + " " + std::to_string(this->getPrioridad());
+    return row;
+}

@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <time.h>
 
 #define TIEMPO_TOTAL 100
 #define T_LLEGADA_LIMITE 50
@@ -55,6 +56,7 @@ public:
     bool soyMasCorto(const proceso &otro) const;
     bool tengoMasPrioridad(const proceso &otro) const;
     static bool MasCortoRestante(proceso &p1, proceso &p2);
+    std::string getString();
 
     proceso* copiarProceso();
     proceso obtenerCopiaLimpia();

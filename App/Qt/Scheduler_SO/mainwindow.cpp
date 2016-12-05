@@ -37,6 +37,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::pintar_tarea_cpu(proceso &p)
+{
+    //array_gantt_cpu[tiempo]->setStyleSheet(colores[p.get_id()]);
+    //array_gantt_cpu[tiempo]->setText(QString(p.get_id()));
+}
+
 void MainWindow::on_boton_simular_clicked()
 {
     fillTable();

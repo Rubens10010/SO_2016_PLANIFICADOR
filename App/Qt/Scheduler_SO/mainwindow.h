@@ -24,6 +24,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void pintar_tarea_cpu(proceso &p);
+    void pintar_cola_cpu(Cola &c);
+
     void llenar_arreglo_gantt_cpu();
     void llenar_arreglo_gantt_es();
     void llenar_arreglo_cola_cpu();

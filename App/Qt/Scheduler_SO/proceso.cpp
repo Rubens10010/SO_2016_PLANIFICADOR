@@ -17,7 +17,7 @@ proceso::proceso(short id_d, short tl, short ts[5], short prioridad = 0)
     this->estado = Waiting;
     this->prioridad = prioridad;
     this->t_total_servicio = t_servicio[0] + t_servicio[1] + t_servicio[2] + t_servicio[3] + t_servicio[4];
-
+    getTiempoRestante();
 }
 
 /**
@@ -61,6 +61,7 @@ void proceso::set_aleatorio(short number)
     this->prioridad = rand()%125+1;
     this->termino = 0;
     this->estado = Waiting;
+    getTiempoRestante();
 
 }
 

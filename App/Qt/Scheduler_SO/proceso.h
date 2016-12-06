@@ -6,10 +6,10 @@
 #include <iostream>
 #include <time.h>
 
-#define TIEMPO_TOTAL 100
-#define T_LLEGADA_LIMITE 50
-#define T_SERVICIO_MIN 10
-#define T_SERVICIO_MAX 40	// Disminuir el T_servicio_min
+#define TIEMPO_TOTAL 40
+#define T_LLEGADA_LIMITE 10
+#define T_SERVICIO_MIN 2
+#define T_SERVICIO_MAX 4	// Disminuir el T_servicio_min
 
 
 /**

@@ -21,8 +21,8 @@ algoritmos::MisAlgoritmos* Simulacion::m_Algoritmo;
 
 void Simulacion::reiniciar()
 {
-    Tiempo = 0;
-    terminado = false;
+    cpu::Tiempo = 0;
+    cpu::terminado = false;
 }
 
 /**
@@ -44,7 +44,7 @@ proceso Simulacion::avanzar()
 {
 
     proceso p(0);
-    if(Tiempo == 0)
+    if(cpu::Tiempo == 0)
         seleccionarAlgoritmo();
     p = m_Algoritmo->siguientePaso(Tiempo);
     if(m_Algoritmo->finalizado())
@@ -60,17 +60,17 @@ proceso Simulacion::avanzar()
 void Simulacion::seleccionarAlgoritmo()
 {
 
-    if(tipoAlgoritmo == "FCFS")
+    if(cpu::tipoAlgoritmo == "FCFS")
         m_Algoritmo = new algoritmos::FCFS(ColaPrincipal::obtener());
-    else if(tipoAlgoritmo == "SJF")
+    else if(cpu::tipoAlgoritmo == "SJF")
         m_Algoritmo = new algoritmos::FCFS(ColaPrincipal::obtener());
-    else if(tipoAlgoritmo ==  "Priority1")
+    else if(cpu::tipoAlgoritmo ==  "Priority1")
         m_Algoritmo = new algoritmos::Prioridad1(ColaPrincipal::obtener());
-    else if(tipoAlgoritmo == "STRF")
+    else if(cpu::tipoAlgoritmo == "STRF")
         m_Algoritmo = new algoritmos::FCFS(ColaPrincipal::obtener());
-    else if(tipoAlgoritmo == "Priority2")
+    else if(cpu::tipoAlgoritmo == "Priority2")
         m_Algoritmo = new algoritmos::Prioridad2(ColaPrincipal::obtener());
-    else if(tipoAlgoritmo == "Round Robin")
+    else if(cpu::tipoAlgoritmo == "Round Robin")
         m_Algoritmo = new algoritmos::FCFS(ColaPrincipal::obtener());
 
 }

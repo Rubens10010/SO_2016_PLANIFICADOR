@@ -5,6 +5,8 @@
 
 using namespace std;
 
+int MainWindow::idlTiempo=0;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -29,24 +31,21 @@ MainWindow::MainWindow(QWidget *parent) :
 
     srand(time(NULL));
 
+   future = QtConcurrent::run(this,&MainWindow::iniciar);
+
+    cpu::tipoAlgoritmo = "FCFS";
+     connect(ui->info_algoritmo, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),[this](int index){ on_info_algoritmo_currentIndexChanged( index ); });
 
 }
 
 MainWindow::~MainWindow()
 {
+
+    future.cancel();
     delete ui;
 }
 
-void MainWindow::pintar_tarea_cpu(proceso &p)
-{
-    //array_gantt_cpu[tiempo]->setStyleSheet(colores[p.get_id()]);
-    //array_gantt_cpu[tiempo]->setText(QString(p.get_id()));
-}
 
-void MainWindow::on_boton_simular_clicked()
-{
-    fillTable();
-}
 
 void MainWindow::on_boton_detener_clicked()
 {
@@ -255,7 +254,7 @@ void MainWindow::fillTable()
     std::vector<std::string> temp;
     temp=cpu::ColaPrincipal::obtener().getInformacionTabla();
 
-    for(int i=0;i<temp.size();i++)
+    for(unsigned int i=0;i<temp.size();i++)
     {
         QString qstr = QString::fromStdString(temp[i]);
         QStringList list=qstr.split(" ");
@@ -270,3 +269,98 @@ void MainWindow::fillTable()
 
 
 }
+
+
+void MainWindow::iniciar()
+{
+      while(true)
+      {
+          if(!cpu::detenido && !cpu::terminado)
+          {
+              siguientePaso();
+              delay();
+          }
+      }
+
+}
+
+void MainWindow::siguientePaso()
+{
+ if(!cpu::terminado)
+ {
+     ui->info_algoritmo->setDisabled(true);
+     ui->info_num_tarea->setDisabled(true);
+     ui->info_quantum->setDisabled(true);
+     ui->info_velocidad->setDisabled(true);
+     ui->boton_simular->setDisabled(true);
+
+     proceso temp = cpu::Simulacion::avanzar();
+     pintar_tarea_cpu(temp,cpu::Tiempo);
+     //cpuVisual(temp,cpu::Tiempo);
+    // pasar al visualizador
+ }
+
+    if(cpu::terminado)
+    {
+        finilizarAccion();
+
+    }
+
+cpu::Tiempo++;
+cpu::Simulacion::obtenerColaListos().mostrarCola(cpu::Tiempo);
+
+
+}
+
+void MainWindow::delay()
+{
+
+}
+
+void MainWindow::finilizarAccion()
+{
+
+}
+
+
+
+
+void MainWindow::on_boton_simular_clicked()
+{
+    fillTable();
+    cpu::detenido = false;
+    // bloquear simulate button
+    // bloquear boton ssiguiente
+    // activar boton parar
+}
+
+void MainWindow::on_info_algoritmo_currentIndexChanged(int index)
+{
+    qDebug()<<index;
+    QString temp=ui->info_algoritmo->currentText();
+    qDebug()<<temp;
+    std::string algoritmo =temp.toStdString();
+    cpu::tipoAlgoritmo=algoritmo;
+}
+
+void MainWindow::pintar_tarea_cpu(proceso &p, short t)
+{
+    array_gantt_cpu[t]->setStyleSheet(QString::fromStdString(colores[p.get_id()]));
+    array_gantt_cpu[t]->setText(QString(p.get_id()));
+}
+
+/**
+ * @brief cpuVisual Establece el contenido actual de las labels en CPU
+ * @param p
+ * @param t
+ */
+void MainWindow::cpuVisual(proceso &p, short t)
+{
+    if(p.getTiempoComienzo()>0)
+    {
+        idlTiempo++;
+    }
+
+}
+
+void cpuClear();

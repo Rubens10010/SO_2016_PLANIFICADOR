@@ -80,4 +80,5 @@ void MisAlgoritmos::setProcesoActual()
     proceso_actual = ColaListos->obtenerProceso(0);
     ColaListos->removerProceso(0);
 }
+
 }

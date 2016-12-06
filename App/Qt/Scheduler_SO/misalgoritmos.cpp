@@ -2,6 +2,8 @@
 
 namespace algoritmos {
 
+proceso nul(0);
+
 /**
  * @brief MisAlgoritmos::MisAlgoritmos := Inicializa la lista de procesos y la cola de listos y toma una copia de la cola de simulacion a trabajar
  *           y la reordena por tiempo de llegada lo cual hace mas facil para el planificador saber cual proceso vino primero.

@@ -138,7 +138,7 @@ bool proceso::reducir_tiempo(int n, bool tipo)
         {
            // asumiendo que n es menor o igual
            t_servicio[i]-=n;
-           restante-=n;
+           //restante-=n;
            return true;
         }
         i++;
@@ -218,7 +218,7 @@ void proceso::procesoTrabajado(int tiempoSimulacion)
 
     // Asumiendo que el proceso ya a empezado a trabajar
     reducir_tiempo(1,true);
-    if(restante == 0)
+    if(/*restante == 0*/getTiempoRestante()==0)
     {
         termino = tiempoSimulacion + 1;
         estado = Finished;
@@ -256,7 +256,8 @@ short proceso::getTiempoEspera(short t_)
 short proceso::getTiempoRestante()
 {
 
-    this->restante = t_servicio[0] + t_servicio[1] + t_servicio[2] + t_servicio[3] + t_servicio[4];
+    //this->restante = t_servicio[0] + t_servicio[1] + t_servicio[2] + t_servicio[3] + t_servicio[4];
+    this->restante = t_servicio[0] + t_servicio[2] + t_servicio[4];
     return this->restante;
 
 }

@@ -42,7 +42,6 @@ Cola Simulacion::obtenerColaListos()
 
 proceso Simulacion::avanzar()
 {
-
     proceso p(0);
     if(cpu::Tiempo == 0)
         seleccionarAlgoritmo();
@@ -50,7 +49,6 @@ proceso Simulacion::avanzar()
     if(m_Algoritmo->finalizado())
         terminado = true;
     return p;
-
 }
 
 /**

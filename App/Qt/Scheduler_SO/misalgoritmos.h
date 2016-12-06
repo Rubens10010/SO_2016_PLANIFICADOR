@@ -11,6 +11,7 @@ namespace algoritmos
      * @brief The MisAlgoritmos class usada como clase base para todas las clases de algoritmos de planificacion
      * para el uso de polimorfismo. Ademas mantiene variables y metodos comunes a todas las clases de algoritmos
      */
+    extern proceso nul;
 
     class MisAlgoritmos
     {

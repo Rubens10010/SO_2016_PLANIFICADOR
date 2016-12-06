@@ -24,7 +24,8 @@ proceso FCFS::siguientePaso(short tiempoSimulacion)
     if(!ocupada)
     {
         if(ColaListos->estaVacio())
-               throw -2;    // error 2
+               //throw -2;    // error 2
+            return algoritmos::nul;
         ocupada = true;
         setProcesoActual();
     }

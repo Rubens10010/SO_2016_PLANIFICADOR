@@ -306,8 +306,8 @@ void MainWindow::siguientePaso()
 
     }
 
-cpu::Tiempo++;
-cpu::Simulacion::obtenerColaListos().mostrarCola(cpu::Tiempo);
+    cpu::Tiempo++;
+    //cpu::Simulacion::obtenerColaListos().mostrarCola(cpu::Tiempo);
 
 
 }
@@ -339,14 +339,19 @@ void MainWindow::on_info_algoritmo_currentIndexChanged(int index)
     qDebug()<<index;
     QString temp=ui->info_algoritmo->currentText();
     qDebug()<<temp;
-    std::string algoritmo =temp.toStdString();
+    std::string algoritmo = temp.toStdString();
     cpu::tipoAlgoritmo=algoritmo;
 }
 
 void MainWindow::pintar_tarea_cpu(proceso &p, short t)
 {
+
+    if(p.get_id()==0)
+        return;
+    qDebug()<<QString::fromStdString(colores[p.get_id()]);
     array_gantt_cpu[t]->setStyleSheet(QString::fromStdString(colores[p.get_id()]));
-    array_gantt_cpu[t]->setText(QString(p.get_id()));
+    array_gantt_cpu[t]->setText(QString::fromStdString(std::to_string(p.get_id())));
+
 }
 
 /**

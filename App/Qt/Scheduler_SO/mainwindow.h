@@ -32,8 +32,6 @@ public:
     void llenar_arreglo_cola_cpu();
     void llenar_arreglo_cola_es();
 
-
-
     void iniciar();
     void siguientePaso();
     void delay();
@@ -46,6 +44,9 @@ public:
     void establecer_colores();
 
     void fillTable();
+    void updateTable(proceso &p,short t);
+    double getPromedioEspera();     // Tiempo promedio de espera de todos los procesos
+    double getPromedioRetorno();    // Tiempo promedio de retorno para todos los procesos
 
 
     static int idlTiempo;

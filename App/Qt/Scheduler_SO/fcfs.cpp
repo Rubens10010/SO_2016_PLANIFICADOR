@@ -28,6 +28,7 @@ proceso FCFS::siguientePaso(short tiempoSimulacion)
             return algoritmos::nul;
         ocupada = true;
         setProcesoActual();
+        proceso_actual.setComienzo(tiempoSimulacion);
     }
     return trabajarEnCPU(tiempoSimulacion);
 

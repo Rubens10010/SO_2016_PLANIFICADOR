@@ -59,6 +59,7 @@ void proceso::set_aleatorio(short number)
     t_total_servicio = t_servicio[0] + t_servicio[1] + t_servicio[2] + t_servicio[3] + t_servicio[4];
 
     this->prioridad = rand()%125+1;
+    this->comienzo = -1;
     this->termino = 0;
     this->estado = Waiting;
     getTiempoRestante();
@@ -450,7 +451,7 @@ bool proceso::MasCortoRestante(proceso &p1, proceso &p2)
 }
 
 
-std::string proceso::getString()
+std::string proceso::getString(short t)
 {
     std::string row;
 
@@ -461,6 +462,12 @@ std::string proceso::getString()
     {
         row = row + std::to_string(this->t_servicio[j]) +"-";
     }
-    row = row + std::to_string(this->t_servicio[4]) + " " + std::to_string(this->getPrioridad());
+    row = row + std::to_string(this->t_servicio[4]) + " " + std::to_string(this->getPrioridad()) +" ";
+    row = row + std::to_string(this->getTiempoComienzo()) + " ";
+    row = row + std::to_string(this->getTiempoEspera(t)) + " ";
+    row = row + std::to_string(this->getTiempoRestante()) + " ";
+    row = row + std::to_string(this->getTiempoTermino()) + " ";
+    row = row + std::to_string(this->getTiempoRespuesta(t)) + " ";
+    row = row + std::to_string(this->getPorcentaje());
     return row;
 }

@@ -41,19 +41,19 @@ public:
     QLabel *label_quantum;
     QPushButton *boton_comenzar;
     QPushButton *boton_terminar;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QComboBox *info_algoritmo;
     QPushButton *boton_detener;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_2;
     QComboBox *info_num_tarea;
     QPushButton *boton_simular;
-    QWidget *widget2;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_3;
     QComboBox *info_velocidad;
     QPushButton *boton_siguiente;
-    QWidget *widget3;
+    QWidget *layoutWidget3;
     QVBoxLayout *verticalLayout_4;
     QComboBox *info_quantum;
     QPushButton *boton_reiniciar;
@@ -280,78 +280,78 @@ public:
         boton_terminar = new QPushButton(frame_info);
         boton_terminar->setObjectName(QStringLiteral("boton_terminar"));
         boton_terminar->setGeometry(QRect(220, 150, 181, 22));
-        widget = new QWidget(frame_info);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(100, 80, 77, 51));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(frame_info);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(100, 80, 84, 52));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        info_algoritmo = new QComboBox(widget);
+        info_algoritmo = new QComboBox(layoutWidget);
         info_algoritmo->setObjectName(QStringLiteral("info_algoritmo"));
         info_algoritmo->setEnabled(true);
 
         verticalLayout->addWidget(info_algoritmo);
 
-        boton_detener = new QPushButton(widget);
+        boton_detener = new QPushButton(layoutWidget);
         boton_detener->setObjectName(QStringLiteral("boton_detener"));
 
         verticalLayout->addWidget(boton_detener);
 
-        widget1 = new QWidget(frame_info);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(10, 80, 77, 51));
-        verticalLayout_2 = new QVBoxLayout(widget1);
+        layoutWidget1 = new QWidget(frame_info);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(10, 80, 82, 52));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget1);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        info_num_tarea = new QComboBox(widget1);
+        info_num_tarea = new QComboBox(layoutWidget1);
         info_num_tarea->setObjectName(QStringLiteral("info_num_tarea"));
         info_num_tarea->setEditable(true);
 
         verticalLayout_2->addWidget(info_num_tarea);
 
-        boton_simular = new QPushButton(widget1);
+        boton_simular = new QPushButton(layoutWidget1);
         boton_simular->setObjectName(QStringLiteral("boton_simular"));
 
         verticalLayout_2->addWidget(boton_simular);
 
-        widget2 = new QWidget(frame_info);
-        widget2->setObjectName(QStringLiteral("widget2"));
-        widget2->setGeometry(QRect(210, 80, 80, 51));
-        verticalLayout_3 = new QVBoxLayout(widget2);
+        layoutWidget2 = new QWidget(frame_info);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(210, 80, 99, 52));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget2);
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        info_velocidad = new QComboBox(widget2);
+        info_velocidad = new QComboBox(layoutWidget2);
         info_velocidad->setObjectName(QStringLiteral("info_velocidad"));
         info_velocidad->setEditable(true);
 
         verticalLayout_3->addWidget(info_velocidad);
 
-        boton_siguiente = new QPushButton(widget2);
+        boton_siguiente = new QPushButton(layoutWidget2);
         boton_siguiente->setObjectName(QStringLiteral("boton_siguiente"));
 
         verticalLayout_3->addWidget(boton_siguiente);
 
-        widget3 = new QWidget(frame_info);
-        widget3->setObjectName(QStringLiteral("widget3"));
-        widget3->setGeometry(QRect(330, 80, 77, 51));
-        verticalLayout_4 = new QVBoxLayout(widget3);
+        layoutWidget3 = new QWidget(frame_info);
+        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(330, 80, 82, 52));
+        verticalLayout_4 = new QVBoxLayout(layoutWidget3);
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        info_quantum = new QComboBox(widget3);
+        info_quantum = new QComboBox(layoutWidget3);
         info_quantum->setObjectName(QStringLiteral("info_quantum"));
         info_quantum->setEditable(true);
 
         verticalLayout_4->addWidget(info_quantum);
 
-        boton_reiniciar = new QPushButton(widget3);
+        boton_reiniciar = new QPushButton(layoutWidget3);
         boton_reiniciar->setObjectName(QStringLiteral("boton_reiniciar"));
 
         verticalLayout_4->addWidget(boton_reiniciar);
@@ -1536,6 +1536,7 @@ public:
         palette40.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush9);
         palette40.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush2);
         cpu_gantt_02->setPalette(palette40);
+        cpu_gantt_02->setAutoFillBackground(false);
         cpu_gantt_02->setAlignment(Qt::AlignCenter);
         cpu_gantt_03 = new QLabel(frame_info_5);
         cpu_gantt_03->setObjectName(QStringLiteral("cpu_gantt_03"));
@@ -6255,7 +6256,7 @@ public:
         MainWindow->setStatusBar(statusBar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 994, 21));
+        menuBar->setGeometry(QRect(0, 0, 994, 19));
         menuPlanificador_de_Procesos_CSUNSA = new QMenu(menuBar);
         menuPlanificador_de_Procesos_CSUNSA->setObjectName(QStringLiteral("menuPlanificador_de_Procesos_CSUNSA"));
         menuAyuda = new QMenu(menuBar);

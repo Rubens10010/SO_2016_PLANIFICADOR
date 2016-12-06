@@ -49,7 +49,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_boton_simular_clicked()
 {
     fillTable();
-    //cpu::detenido = false;
+    // cpu::detenido = false;
     // bloquear simulate button
     // bloquear boton ssiguiente
     // activar boton parar

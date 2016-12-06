@@ -24,6 +24,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    // Funciones
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
@@ -31,7 +32,6 @@ public:
     void llenar_arreglo_gantt_es();
     void llenar_arreglo_cola_cpu();
     void llenar_arreglo_cola_es();
-
 
 
     void iniciar();
@@ -48,6 +48,7 @@ public:
     void fillTable();
 
 
+    // Variables
     static int idlTiempo;
     QFuture<void> future;
 

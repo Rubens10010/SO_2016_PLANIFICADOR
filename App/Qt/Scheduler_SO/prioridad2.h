@@ -8,7 +8,7 @@ namespace algoritmos{
 class Prioridad2:public MisAlgoritmos
 {
 public:
-    Prioridad2(Cola colaProcesos):MisAlgoritmos(colaProcesos){};
+    Prioridad2(Cola colaProcesos):MisAlgoritmos(colaProcesos){}
     proceso siguientePaso(short tiempoSimulacion) override;
 };
 

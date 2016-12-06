@@ -56,7 +56,7 @@ public:
     bool soyMasCorto(const proceso &otro) const;
     bool tengoMasPrioridad(const proceso &otro) const;
     static bool MasCortoRestante(proceso &p1, proceso &p2);
-    std::string getString();
+    std::string getString(short t);
 
     proceso* copiarProceso();
     proceso obtenerCopiaLimpia();

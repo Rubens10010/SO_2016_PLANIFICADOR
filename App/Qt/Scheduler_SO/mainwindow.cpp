@@ -48,8 +48,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_boton_simular_clicked()
 {
+
+    int indice=ui->info_num_tarea->currentIndex();
+    indice=indice+1;
+    cpu::ColaPrincipal::crearNueva(indice);
+
     fillTable();
-    //cpu::detenido = false;
+    cpu::detenido = false;
     // bloquear simulate button
     // bloquear boton ssiguiente
     // activar boton parar
@@ -255,13 +260,13 @@ void MainWindow::fillTable()
 
     ui->tabla_tareas->clearContents();
 
-    int indice=ui->info_num_tarea->currentIndex();
+    /*int indice=ui->info_num_tarea->currentIndex();
     indice=indice+1;
     cpu::ColaPrincipal::crearNueva(indice);
 
-
+*/
     std::vector<std::string> temp;
-    temp=cpu::ColaPrincipal::obtener().getInformacionTabla();
+    temp=cpu::ColaPrincipal::obtener().getInformacionTabla(cpu::Tiempo);
 
     for(unsigned int i=0;i<temp.size();i++)
     {
@@ -272,11 +277,32 @@ void MainWindow::fillTable()
         ui->tabla_tareas->setItem(i, 1, new QTableWidgetItem(list[1]));
         ui->tabla_tareas->setItem(i, 2, new QTableWidgetItem(list[2]));
         ui->tabla_tareas->setItem(i, 3, new QTableWidgetItem(list[3]));
-
+        ui->tabla_tareas->setItem(i, 4, new QTableWidgetItem(list[4]));
+        ui->tabla_tareas->setItem(i, 5, new QTableWidgetItem(list[5]));
+        ui->tabla_tareas->setItem(i, 6, new QTableWidgetItem(list[6]));
+        ui->tabla_tareas->setItem(i, 7, new QTableWidgetItem(list[7]));
+        ui->tabla_tareas->setItem(i, 8, new QTableWidgetItem(list[8]));
     }
+}
 
+void MainWindow::updateTable(proceso &p, short t)
+{
+    std::string temp;
+    temp = p.getString(t);
+    int i = p.get_id()-1;
+    QString qstr = QString::fromStdString(temp);
 
-
+    QStringList list=qstr.split(" ");
+    //ui->tabla_tareas->c
+    ui->tabla_tareas->setItem(i, 0, new QTableWidgetItem(list[0]));
+    ui->tabla_tareas->setItem(i, 1, new QTableWidgetItem(list[1]));
+    ui->tabla_tareas->setItem(i, 2, new QTableWidgetItem(list[2]));
+    ui->tabla_tareas->setItem(i, 3, new QTableWidgetItem(list[3]));
+    ui->tabla_tareas->setItem(i, 4, new QTableWidgetItem(list[4]));
+    ui->tabla_tareas->setItem(i, 5, new QTableWidgetItem(list[5]));
+    ui->tabla_tareas->setItem(i, 6, new QTableWidgetItem(list[6]));
+    ui->tabla_tareas->setItem(i, 7, new QTableWidgetItem(list[7]));
+    ui->tabla_tareas->setItem(i, 8, new QTableWidgetItem(list[8]));
 }
 
 void MainWindow::iniciar()
@@ -303,9 +329,8 @@ void MainWindow::siguientePaso()
      ui->boton_simular->setDisabled(true);
 
      proceso temp = cpu::Simulacion::avanzar();
+     cpuVisual(temp,cpu::Tiempo);
      pintar_tarea_cpu(temp,cpu::Tiempo);
-     //cpuVisual(temp,cpu::Tiempo);
-    // pasar al visualizador
  }
 
     if(cpu::terminado)
@@ -314,6 +339,15 @@ void MainWindow::siguientePaso()
 
     }
 
+    std::string t1 = std::to_string(getPromedioEspera());
+    std::string t2 = std::to_string(getPromedioRetorno());
+    if(t1.size()>5)
+        t1 = t1.substr(0,5);
+    if(t2.size()>5)
+        t2 = t2.substr(0,5);
+
+    ui->promedio_esperando->setText(QString::fromStdString(t1));
+    ui->promedio_retorno->setText(QString::fromStdString(t2));
     cpu::Tiempo++;
     //cpu::Simulacion::obtenerColaListos().mostrarCola(cpu::Tiempo);
 
@@ -327,7 +361,7 @@ void MainWindow::delay()
 
 void MainWindow::finilizarAccion()
 {
-
+    cpu::detenido = true;
 }
 
 void MainWindow::on_info_algoritmo_currentIndexChanged(int index)
@@ -344,7 +378,8 @@ void MainWindow::pintar_tarea_cpu(proceso &p, short t)
 
     if(p.get_id()==0)
         return;
-    qDebug()<<QString::fromStdString(colores[p.get_id()]);
+    updateTable(p,t);
+    //qDebug()<<QString::fromStdString(colores[p.get_id()]);
     array_gantt_cpu[t]->setStyleSheet(QString::fromStdString(colores[p.get_id()]));
     array_gantt_cpu[t]->setText(QString::fromStdString(std::to_string(p.get_id())));
 
@@ -357,11 +392,55 @@ void MainWindow::pintar_tarea_cpu(proceso &p, short t)
  */
 void MainWindow::cpuVisual(proceso &p, short t)
 {
-    if(p.getTiempoComienzo()>0)
+    if(p.id == 0)
     {
+        ui->cpu_tarea_actual->setText(" Idle ");
         idlTiempo++;
     }
+    else
+    {
+        ui->cpu_tarea_actual->setText(QString::fromStdString(("P " + std::to_string(p.id))));
+    }
 
+    ui->cpu_tiempo_actual->setText(QString::fromStdString(std::to_string(t)+" -> "+ std::to_string(t+1)));
+    if(t != 0)
+    {
+        ui->cpu_utilizacion->setText(QString::fromStdString(std::to_string((t-idlTiempo)*100/t)+"%"));
+    }
+    else
+    {
+        ui->cpu_utilizacion->setText(QString::fromStdString(std::to_string(100)+"%"));
+    }
 }
 
-void cpuClear();
+void MainWindow::cpuClear()
+{
+    ui->cpu_utilizacion->setText("Idle");
+    ui->cpu_tarea_actual->setText("0");
+    ui->cpu_tiempo_actual->setText("0%");
+    idlTiempo =0;
+}
+
+double MainWindow::getPromedioEspera()     // Tiempo promedio de espera de todos los procesos
+{
+    double prom = 0;
+    unsigned int s = cpu::ColaPrincipal::obtener().size();
+    for(unsigned int i = 0; i < s; i++)
+    {
+        auto x = ui->tabla_tareas->item(i,5)->text();
+        prom += x.toDouble();
+    }
+    return (prom/s);
+}
+
+double MainWindow::getPromedioRetorno()    // Tiempo promedio de retorno para todos los procesos
+{
+    double prom = 0;
+    unsigned int s = cpu::ColaPrincipal::obtener().size();
+    for(unsigned int i = 0; i < s; i++)
+    {
+        auto x = ui->tabla_tareas->item(i,8)->text();
+        prom += x.toDouble();
+    }
+    return (prom/s);
+}

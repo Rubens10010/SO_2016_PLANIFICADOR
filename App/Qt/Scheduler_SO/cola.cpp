@@ -199,12 +199,12 @@ void Cola::mostrarCola(short Tiempo_simulacion)
 }
 
 
-std::vector<std::string> Cola::getInformacionTabla()
+std::vector<std::string> Cola::getInformacionTabla(short t)
 {
     std::vector<std::string> v;
     for(int i = 0; i < listaPrincipal.size(); i++)
     {
-        v.push_back(listaPrincipal[i].getString());
+        v.push_back(listaPrincipal[i].getString(t));
     }
     return v;
 }

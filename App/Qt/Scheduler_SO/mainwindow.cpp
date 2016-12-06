@@ -15,10 +15,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabla_tareas->resizeColumnsToContents();
     ui->tabla_tareas->resizeRowsToContents();
 
-    //ui->tabla_tareas->setItem(0,0,new QTableWidgetItem("asd"));
-    //auto myText = ui->tabla_tareas->item(0,0)->text();
-    //auto myT = myText.toDouble();
-
     establecer_colores();
     llenar_arreglo_gantt_cpu();
     llenar_arreglo_gantt_es();
@@ -32,23 +28,22 @@ MainWindow::MainWindow(QWidget *parent) :
 
     srand(time(NULL));
 
-   future = QtConcurrent::run(this,&MainWindow::iniciar);
+    future = QtConcurrent::run(this,&MainWindow::iniciar);
 
     cpu::tipoAlgoritmo = "FCFS";
-     connect(ui->info_algoritmo, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),[this](int index){ on_info_algoritmo_currentIndexChanged( index ); });
+    connect(ui->info_algoritmo, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            [this](int index){ on_info_algoritmo_currentIndexChanged( index ); });
 
 }
 
 MainWindow::~MainWindow()
 {
-
     future.cancel();
     delete ui;
 }
 
 void MainWindow::on_boton_simular_clicked()
 {
-
     int indice=ui->info_num_tarea->currentIndex();
     indice=indice+1;
     cpu::ColaPrincipal::crearNueva(indice);
@@ -72,7 +67,14 @@ void MainWindow::on_boton_siguiente_clicked()
 
 void MainWindow::on_boton_reiniciar_clicked()
 {
-    cpu::detenido = true;
+    ui->boton_simular->setEnabled(true);
+    ui->info_num_tarea->setEnabled(true);
+    ui->info_algoritmo->setEnabled(true);
+    ui->info_velocidad->setEnabled(true);
+    ui->info_quantum->setEnabled(true);
+
+
+    //cpu::detenido = true;
     ui->tabla_tareas->clearContents();
     ui->cpu_tarea_actual->setText("JOB 0");
     ui->cpu_tiempo_actual->setText("0");
@@ -90,12 +92,18 @@ void MainWindow::on_boton_comenzar_clicked()
 
 void MainWindow::on_boton_terminar_clicked()
 {
+    ui->boton_simular->setEnabled(true);
+    ui->info_num_tarea->setEnabled(true);
+    ui->info_algoritmo->setEnabled(true);
+    ui->info_velocidad->setEnabled(true);
+    ui->info_quantum->setEnabled(true);
 
+
+    cpu::terminado = true;
+    cpu::detenido = true;
+
+    limpiar_arreglos();
 }
-
-
-
-
 
 void MainWindow::llenar_arreglo_gantt_cpu()
 {
